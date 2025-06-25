@@ -154,7 +154,7 @@ window.onload = function () {
 console.log(window.location.search);
 const urlParams = new URLSearchParams(window.location.search);
 const ip = urlParams.get('ip') || '192.168.43.19';
-const port = urlParams.get('port') || '42291';
+const port = urlParams.get('port') || '56257';
 
 const mSocket = new WebSocket("ws://" + ip + ":" + port);
 
