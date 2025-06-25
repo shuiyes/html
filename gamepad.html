@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
     <head>
@@ -22,69 +23,53 @@
     <body style="background-color: black;overflow:hidden;">
 
 <div id="mouseOpt">
-    <p id="tips" style="position:absolute;top:30%;width:100%;text-align:center;color:#ffbb00"></p>
+    <p id="tips" style="position:absolute;top:20%;width:100%;text-align:center;color:#ffbb00"></p>
     <div id="vhandles">
         <div id="vdv-dpad" class="vhandle">
-            <div id="btn-direction" ontouchstart="disableTouch()" ontouchend="disableTouch()">
-            </div>
+            <div id="btn-direction" ontouchstart="disableTouch()" ontouchend="disableTouch()"></div>
             <div id="btn-left" class="direction" data-key="左" data-code="21" ontouchstart="onKeyDown(this)"
-            ontouchend="onKeyUp(this)">
-            </div>
+            ontouchend="onKeyUp(this)"></div>
             <div id="btn-up" class="direction" data-key="上" data-code="19" ontouchstart="onKeyDown(this)"
-            ontouchend="onKeyUp(this)">
-            </div>
+            ontouchend="onKeyUp(this)"></div>
             <div id="btn-right" class="direction" data-key="右" data-code="22" ontouchstart="onKeyDown(this)"
-            ontouchend="onKeyUp(this)">
-            </div>
+            ontouchend="onKeyUp(this)"></div>
             <div id="btn-down" class="direction" data-key="下" data-code="20" ontouchstart="onKeyDown(this)"
-            ontouchend="onKeyUp(this)">
-            </div>
+            ontouchend="onKeyUp(this)"></div>
             <div id="btn-left-up" class="direction" data-key="左上" data-code="268" ontouchstart="onKeyDown(this)"
-            ontouchend="onKeyUp(this)">
-            </div>
+            ontouchend="onKeyUp(this)"></div>
             <div id="btn-up-right" class="direction" data-key="上右" data-code="270" ontouchstart="onKeyDown(this)"
-            ontouchend="onKeyUp(this)">
-            </div>
+            ontouchend="onKeyUp(this)"></div>
             <div id="btn-right-down" class="direction" data-key="右下" data-code="271" ontouchstart="onKeyDown(this)"
-            ontouchend="onKeyUp(this)">
-            </div>
+            ontouchend="onKeyUp(this)"></div>
             <div id="btn-down-left" class="direction" data-key="下左" data-code="269" ontouchstart="onKeyDown(this)"
-            ontouchend="onKeyUp(this)">
-            </div>
+            ontouchend="onKeyUp(this)"></div>
         </div>
         <div id="left-joy" class="vhandle" style="touch-action: none;"></div>
         <div id="right-joy" class="vhandle" style="touch-action: none;"></div>
-        </div>
         <div id="btn-lb" class="btn vhandle" data-key="LB" data-code="102" ontouchstart="onKeyDown(this)"
-        ontouchend="onKeyUp(this)">
-        </div>
+        ontouchend="onKeyUp(this)"></div>
         <div id="btn-lt" class="btn vhandle" data-key="LT" data-code="104" ontouchstart="onKeyDown(this)"
-        ontouchend="onKeyUp(this)">
-        </div>
+        ontouchend="onKeyUp(this)"></div>
+        <div id="btn-ls" class="btn vhandle" data-key="LS" data-code="106" ontouchstart="onKeyDown(this)"
+        ontouchend="onKeyUp(this)"></div>
+        <div id="btn-rs" class="btn vhandle" data-key="RS" data-code="107" ontouchstart="onKeyDown(this)"
+        ontouchend="onKeyUp(this)"></div>
         <div id="btn-rb" class="btn vhandle" data-key="RB" data-code="103" ontouchstart="onKeyDown(this)"
-        ontouchend="onKeyUp(this)">
-        </div>
+        ontouchend="onKeyUp(this)"></div>
         <div id="btn-rt" class="btn vhandle" data-key="RT" data-code="105" ontouchstart="onKeyDown(this)"
-        ontouchend="onKeyUp(this)">
-        </div>
+        ontouchend="onKeyUp(this)"></div>
         <div id="btn-start" class="btn vhandle" data-key="START" data-code="108" ontouchstart="onKeyDown(this)"
-        ontouchend="onKeyUp(this)">
-        </div>
+        ontouchend="onKeyUp(this)"></div>
         <div id="btn-back" class="btn vhandle" data-key="BACK" data-code="4" ontouchstart="onKeyDown(this)"
-        ontouchend="onKeyUp(this)">
-        </div>
+        ontouchend="onKeyUp(this)"></div>
         <div id="btn-x" class="btn vhandle" data-key="X" data-code="99" ontouchstart="onKeyDown(this)"
-        ontouchend="onKeyUp(this)">
-        </div>
+        ontouchend="onKeyUp(this)"></div>
         <div id="btn-y" class="btn vhandle" data-key="Y" data-code="100" ontouchstart="onKeyDown(this)"
-        ontouchend="onKeyUp(this)">
-        </div>
+        ontouchend="onKeyUp(this)"></div>
         <div id="btn-b" class="btn vhandle" data-key="B" data-code="97" ontouchstart="onKeyDown(this)"
-        ontouchend="onKeyUp(this)">
-        </div>
+        ontouchend="onKeyUp(this)"></div>
         <div id="btn-a" class="btn vhandle" data-key="A" data-code="96" ontouchstart="onKeyDown(this)"
-        ontouchend="onKeyUp(this)">
-        </div>
+        ontouchend="onKeyUp(this)"></div>
         <!--  onpointerdown="onKeyDown(this)" onpointerup="onKeyUp(this)" -->
     </div>
 </div>
@@ -100,61 +85,59 @@ function disableTouch(){
 }
 function onKeyDown(element){
     event.preventDefault();
-
     element.classList.add('act');
     sendMessage('BTN_DOWN;' + element.dataset.code);
     return false;
 }
 function onKeyUp(element){
     event.preventDefault();
-    
     element.classList.remove('act');
     sendMessage('BTN_LIFT;' + element.dataset.code);
     return false;
 }
 
 function initLefyJoy(){
-    var options = {
+    const options = {
         zone: $('left-joy'),
         mode: "static",
         size: 160,
         color: "#333",
         position: { left: '50%', top: '50%' },
     };
-    var manager = nipplejs.create(options);
+    const manager = nipplejs.create(options);
     manager.on('start', function(evt, nipple) {
         $('left-joy').classList.add("act");
     }).on('move', function(evt, nipple) {
         sendJoystick(nipple.vector, true);
     }).on('end', function(evt, nipple) {
         $('left-joy').classList.remove("act");
-        sendMessage('JOYSTICK;TRUE;0.0;0.0');
+        sendMessage('JOYSTICK;true;0.0;0.0');
     });
 }
 
 function initRightJoy(){
-    var options = {
+    const options = {
         zone: $('right-joy'),
         mode: "static",
         size: 140,
         position: {left: '50%', top: '50%'},
         color: 'blue'
     };
-    var manager = nipplejs.create(options);
+    const manager = nipplejs.create(options);
     manager.on('start', function(evt, nipple) {
         $('right-joy').classList.add("act");
     }).on('move', function(evt, nipple) {
         sendJoystick(nipple.vector, false);
     }).on('end', function(evt, nipple) {
         $('right-joy').classList.remove("act");
-        sendMessage('JOYSTICK;FALSE;0.0;0.0');
+        sendMessage('JOYSTICK;false;0.0;0.0');
     });
 }
 
 function sendJoystick(pos, left){
-    if(mScreenRotated){
+    if (mScreenRotated) {
         sendMessage('JOYSTICK;' + left + ';' + (-pos.y.toFixed(4)) + ";" + pos.x.toFixed(4));
-    }else{
+    } else {
         sendMessage('JOYSTICK;' + left + ';' + pos.x.toFixed(4) + ";" + pos.y.toFixed(4));
     }
     
@@ -171,7 +154,7 @@ window.onload = function () {
 console.log(window.location.search);
 const urlParams = new URLSearchParams(window.location.search);
 const ip = urlParams.get('ip') || '192.168.43.19';
-const port = urlParams.get('port') || '32899';
+const port = urlParams.get('port') || '42291';
 
 const mSocket = new WebSocket("ws://" + ip + ":" + port);
 
@@ -188,9 +171,9 @@ mSocket.addEventListener("error", function (event) {
     mSocketError = true;
 });
 mSocket.addEventListener("close", function (event) {
-    if(mSocketError){
+    if (mSocketError) {
         toast("❌ 游戏连接失败");
-    }else{
+    } else {
         toast("❌ 游戏连接已关闭，请重新扫码连接");
     }
     
@@ -211,8 +194,8 @@ window.addEventListener('resize', function(){
     window.location.reload();
 });
 
-let width = window.innerWidth ? window.innerWidth : document.body.clientWidth;
-let height = window.innerHeight ? window.innerHeight : document.body.clientHeight;
+const width = window.innerWidth ? window.innerWidth : document.body.clientWidth;
+const height = window.innerHeight ? window.innerHeight : document.body.clientHeight;
 var mScreenRotated = width < height;
 if (mScreenRotated) {
     // 竖屏 -> 旋转成横屏
@@ -228,4 +211,5 @@ if (mScreenRotated) {
 }
 
 toast("游戏连接中...");
+
 </script>
