@@ -156,7 +156,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const ip = urlParams.get('ip') || '192.168.43.19';
 const port = urlParams.get('port') || '56257';
 
-const mSocket = new WebSocket("ws://" + ip + ":" + port);
+const mSocket = new WebSocket("wss://" + ip + ":" + port);
 
 mSocket.addEventListener("open", function (event) {
     toast("✅ 游戏连接成功");
